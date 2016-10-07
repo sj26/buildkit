@@ -11,7 +11,7 @@ module Buildkit
       # @example
       #   Buildkit.builds
       def builds(options = {})
-        get('builds', options)
+        get("builds", options)
       end
 
       # List builds for an organization
@@ -20,7 +20,7 @@ module Buildkit
       # @return [Array<Sawyer::Resource>] Array of hashes representing Buildkite builds.
       # @see https://buildkite.com/docs/api/builds#list-builds-for-an-organization
       # @example
-      #   Buildkit.organization_builds('my-great-org'))
+      #   Buildkit.organization_builds("my-great-org"))
       def organization_builds(org, options = {})
         get("organizations/#{org}/builds", options)
       end
@@ -32,7 +32,7 @@ module Buildkit
       # @return [Array<Sawyer::Resource>] Array of hashes representing Buildkite builds.
       # @see https://buildkite.com/docs/api/builds#list-builds-for-a-project
       # @example
-      #   Buildkit.project_builds('my-great-org', 'great-project')
+      #   Buildkit.project_builds("my-great-org", "great-project")
       def project_builds(org, project, options = {})
         get("organizations/#{org}/projects/#{project}/builds", options)
       end
@@ -59,7 +59,7 @@ module Buildkit
       # @example
       #   Buildkit.rebuild('my-great-org', 'great-project', 42)
       def rebuild(org, project, number, options = {})
-        put("/v1/organizations/#{org}/projects/#{project}/builds/#{number}/rebuild", options)
+        put("organizations/#{org}/projects/#{project}/builds/#{number}/rebuild", options)
       end
 
       # Create a build
@@ -79,7 +79,7 @@ module Buildkit
       #   })
       #
       def create_build(org, project, options = {})
-        post("/v1/organizations/#{org}/projects/#{project}/builds", options)
+        post("organizations/#{org}/projects/#{project}/builds", options)
       end
     end
   end
